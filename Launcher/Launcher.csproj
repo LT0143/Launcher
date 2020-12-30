@@ -65,10 +65,10 @@
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>.\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
     <Reference Include="Interop.IWshRuntimeLibrary">
       <HintPath>.\Interop.IWshRuntimeLibrary.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -99,7 +99,6 @@
     <Compile Include="FtpProtocol.cs" />
     <Compile Include="FTPThread.cs" />
     <Compile Include="FTPUpdateValue.cs" />
-    <Compile Include="Help\ZipHelper.cs" />
     <Compile Include="Step.cs" />
     <Compile Include="UpdateHelper.cs" />
     <Page Include="MainWindow.xaml">
@@ -149,13 +148,16 @@
     <Resource Include="Respurce\progress_in.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bg.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="logo40.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Close2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bg3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

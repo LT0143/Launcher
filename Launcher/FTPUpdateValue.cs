@@ -117,6 +117,26 @@ namespace Launcher
                 for (i = 0; (bytes / 1024) > 0; i++, bytes /= 1024)
                     dblSByte = bytes / 1024.0;
             return String.Format("{0:0.##}{1}", dblSByte, Suffix[i]);
+             
+        }
+
+        public static string FormatTime(int times)
+        {
+            string[] Suffix = {"秒", "分" , "时" };
+            int lastTime = times;
+            string text = "剩余时长";
+            for(int i=2;i>=0; i--)
+            {
+                int num =(int) Math.Pow(60, i);
+                if (lastTime / num > 0)
+                {
+                    int time = lastTime / num;
+                    text = text + time + Suffix[i];
+                    lastTime = lastTime % num;
+                }
+            }
+
+            return text;
         }
     }
 }

@@ -261,13 +261,9 @@ namespace Launcher
             m_nMaxCount = serverFile.Count;
             m_nCurrentCount = 0;
 
-//            foreach (KeyValuePair<String, RepositoryList> _pair in RepositoryFile)
-//            {
-//                m_nMaxCount += _pair.Value.m_list_file.Count;
-//            }
             if (m_nMaxCount > 0)
             {
-                String strMakeFileName = strPath + "/" + mdfilename;
+                string strMakeFileName = strPath + "/" + mdfilename;
                 FileStream fs = null;
                 try
                 {
@@ -277,20 +273,21 @@ namespace Launcher
 
                     int index = 0;
 
-
-
                     foreach (var myUpdateStruct in serverFile)
                     {
                         var filename = myUpdateStruct.Key;
-                        var clientpath = UpdateHelper.Instance().GetClientPathFile();
-                        String strInsertPath = clientpath + filename;
+                        String strInsertPath = strPath + filename;
                         index++;
-                        string text = string.Format("当前本地校验文件第{0}/{1}个", index, m_nMaxCount);
-                        UpdateHelper.Instance().ChangeTextInfo(text);
+                        //string text = string.Format("当前本地校验文件第{0}/{1}个", index, m_nMaxCount);
 
                         if (File.Exists(strInsertPath))
                         {
                             var format = filename + "=" + ComputeMD5Hash(strInsertPath);
+                            writer.WriteLine(format);
+                        }
+                        else
+                        {
+                            var format = filename + "=null" ;
                             writer.WriteLine(format);
                         }
                         m_nCurrentCount++;

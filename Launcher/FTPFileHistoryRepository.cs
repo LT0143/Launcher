@@ -111,39 +111,39 @@ namespace Launcher
             return 0;
         }
 
-        /// <summary>
-        ///获取RTP文件夹下文件数量大小。
-        /// </summary>
-        /// <param name="protocol"></param>
-        /// <param name="strSourceDir"></param>
-        public static bool GetFileHistory(FtpProtocol protocol, string strDirectory, string currentVer)
-        {
-            bool successful = true;
-            String list = IniManager.GetINIValue(MainWindow.m_localServerVerPath, "RtpList", "list");
-            string[] array = list.Split('-');
-            int num = 0;
+        ///// <summary>
+        /////获取RTP文件夹下文件数量大小。
+        ///// </summary>
+        ///// <param name="protocol"></param>
+        ///// <param name="strSourceDir"></param>
+        //public static bool GetFileHistory(FtpProtocol protocol, string strDirectory, string currentVer)
+        //{
+        //    bool successful = true;
+        //    String list = IniManager.GetINIValue(MainWindow.m_localServerVerPath, "RtpList", "list");
+        //    string[] array = list.Split('-');
+        //    int num = 0;
 
-            for (int i = 0; i < array.Length; i++)
-            {
-                //if (RTPVersion.CompareVersion(currentVer, array[i]) == CompareVersionResult.CompareVersionResult_GreaterRight)
-                //{
-                    string RtpVer = array[i].Replace('.', '_');
-                    string name = strDirectory + RtpVer + ".RTP";
-                    long sizeI = protocol.GetFileSize(name);
-                    if (sizeI != 0)
-                    {
-                        FileHistoryRepository.MAXFILESIZE += sizeI;
-                        FTPUpdateValue.maxByte += sizeI;
-                        num++;
-                        FTPUpdateValue.RtpSizeList.Add(sizeI);
-                    }
-                    else
-                        successful = false;
+        //    for (int i = 0; i < array.Length; i++)
+        //    {
+        //        //if (RTPVersion.CompareVersion(currentVer, array[i]) == CompareVersionResult.CompareVersionResult_GreaterRight)
+        //        //{
+        //            string RtpVer = array[i].Replace('.', '_');
+        //            string name = strDirectory + RtpVer + ".RTP";
+        //            long sizeI = protocol.GetFileSize(name);
+        //            if (sizeI != 0)
+        //            {
+        //                FileHistoryRepository.MAXFILESIZE += sizeI;
+        //                FTPUpdateValue.maxByte += sizeI;
+        //                num++;
+        //                FTPUpdateValue.RtpSizeList.Add(sizeI);
+        //            }
+        //            else
+        //                successful = false;
 
-                //}
-            }
-            FTPUpdateValue.maxfileCount += num;
-            return successful;
-        }
+        //        //}
+        //    }
+        //    FTPUpdateValue.maxfileCount += num;
+        //    return successful;
+        //}
     }
 }
